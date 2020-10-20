@@ -1,0 +1,19 @@
+{
+  "name": "fullstackopen-part3",
+  "version": "1.0.0",
+  "description": "Exercise submissions for [Part 3](https://fullstackopen.com/en/part3) of [Full Stack Open 2020](https://fullstackopen.com) course.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HtetOoWaiYan/full-stack-open-part3.git"
+  },
+  "author": "Htet Oo Wai Yan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HtetOoWaiYan/full-stack-open-part3/issues"
+  },
+  "homepage": "https://github.com/HtetOoWaiYan/full-stack-open-part3#readme"
+}
