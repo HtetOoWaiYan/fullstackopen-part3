@@ -1,19 +1,28 @@
 {
-  "name": "fullstackopen-part3",
-  "version": "1.0.0",
-  "description": "Exercise submissions for [Part 3](https://fullstackopen.com/en/part3) of [Full Stack Open 2020](https://fullstackopen.com) course.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HtetOoWaiYan/full-stack-open-part3.git"
-  },
-  "author": "Htet Oo Wai Yan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HtetOoWaiYan/full-stack-open-part3/issues"
-  },
-  "homepage": "https://github.com/HtetOoWaiYan/full-stack-open-part3#readme"
+    "name": "fullstackopen-part3",
+    "version": "1.0.0",
+    "description": "Exercise submissions for [Part 3](https://fullstackopen.com/en/part3) of [Full Stack Open 2020](https://fullstackopen.com) course.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HtetOoWaiYan/fullstackopen-part3.git"
+    },
+    "author": "Htet Oo Wai Yan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/HtetOoWaiYan/fullstackopen-part3/issues"
+    },
+    "homepage": "https://github.com/HtetOoWaiYan/fullstackopen-part3#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
 }
