@@ -5,8 +5,9 @@ const app = express()
 
 const PORT = process.env.PORT || 3001
 
-// Use json-parser middleware
-app.use(express.json())
+// Use middlewares
+app.use(express.static('build'))
+app.use(express.json()) // json-parser
 app.use(cors())
 
 // Use morgan middleware
