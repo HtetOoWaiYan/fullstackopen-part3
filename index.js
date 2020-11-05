@@ -52,7 +52,7 @@ app.delete('/api/persons/:id', (request, response, next) => {
         .catch(error => next(error))
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body
 
     if (!body.name) {
@@ -65,23 +65,25 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    Person.find({}).then(persons => {
-        if (persons.find(person => person.name === body.name)) {
-            return response.status(409).json({
-                error: 'name already exists'
-            })
-        }
+    // Person.find({}).then(persons => {
+    //     if (persons.find(person => person.name === body.name)) {
+    //         return response.status(409).json({
+    //             error: 'name already exists'
+    //         })
+    //     }
 
-    })
+    // })
 
     const person = new Person({
         name: body.name,
         number: body.number
     })
 
-    person.save().then(savedPerson => {
-        response.json(savedPerson)
-    })
+    person.save()
+        .then(savedPerson => {
+            response.json(savedPerson)
+        })
+        .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
@@ -92,7 +94,7 @@ app.put('/api/persons/:id', (request, response, next) => {
        number: body.number 
     }
 
-    Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    Person.findByIdAndUpdate(request.params.id, person, { new: true, runValidators: true })
         .then(updatedPerson => {
             response.json(updatedPerson)
         })
@@ -104,6 +106,8 @@ const errorHandler = (error, request, response, next) => {
 
     if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformated id' })
+    } else if (error.name === 'ValidationError') {
+        return response.status(400).json({ error: error.message })
     }
 
     next(error)
