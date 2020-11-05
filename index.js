@@ -1,9 +1,9 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
-
-const PORT = process.env.PORT || 3001
+const Person = require('./models/person')
 
 // Use middlewares
 app.use(express.static('build'))
@@ -48,7 +48,9 @@ app.get('/info', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    Person.find({}).then(persons => {
+        response.json(persons)
+    })
 })
 
 app.get('/api/persons/:id', (request, response) => {
@@ -69,8 +71,6 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-const getRandomInt = max => Math.floor(Math.random() * Math.floor(10000))
-
 app.post('/api/persons', (request, response) => {
     const body = request.body
 
@@ -84,22 +84,23 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    if (persons.find(person => person.name === body.name)) {
-        return response.status(409).json({
-            error: 'name already exists'
-        })
-    }
+    // if (persons.find(person => person.name === body.name)) {
+    //     return response.status(409).json({
+    //         error: 'name already exists'
+    //     })
+    // }
 
-    const person = {
-        id: getRandomInt(),
+    const person = new Person({
         name: body.name,
         number: body.number
-    }
+    })
 
-    persons = persons.concat(person)
-
-    response.json(person)
+    person.save().then(savedPerson => {
+        response.json(savedPerson)
+    })    
 })
+
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
