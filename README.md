@@ -10,7 +10,7 @@ Deployed URL - [https://fullstackopen20-part3.herokuapp.com](https://fullstackop
 
 Run: **`npm i`** to install the dependencies.
 
-Create **`.env`** file, add your PORT and [MongoDB Connection String](https://www.mongodb.com/cloud/atlas) like:
+Create **`.env`** file, add your port and [MongoDB Connection String](https://www.mongodb.com/cloud/atlas) like:
 ```
 PORT=YOUR_PORT_NUMBER
 MONGODB_URI='YOUR_MONGODB_CONNECTION_STRING'
@@ -19,7 +19,7 @@ MONGODB_URI='YOUR_MONGODB_CONNECTION_STRING'
 (A guide to setup MongoDB Atlas can be found [here](https://fullstackopen.com/en/part3/saving_data_to_mongo_db#mongo-db).)
 
 Run the app in the development mode: **`npm run dev`**
-<br/>
+
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser. 
 
 API can be access with the URL [http://localhost:3001/api/persons](http://localhost:3001/api/persons)
